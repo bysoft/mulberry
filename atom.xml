@@ -4,7 +4,7 @@
   <title><![CDATA[Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2011-11-16T18:14:23+00:00</updated>
+  <updated>2011-11-16T18:23:02+00:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -110,13 +110,13 @@ developers, and it&#8217;s connected directly to the weinre button in Mulberry a
 
 <h2>More to Come</h2>
 
-<p>The Toura Dev team doesn&#8217;t just work on Mulberry &#8211; we&#8217;ve also made dozens of
-apps that use the underlying Mulberry technology, which means we&#8217;re always
-trying to make our <em>own</em> experience of the toolkit a pleasant one. Pretty much
-every developer-friendly feature we&#8217;ve added so far was added because we&#8217;re
-developers, too, and we hate when our tools get in our way. That said, we know
-tools can always be better &#8211; if there&#8217;s something we could do to make your
-life easier when developing mobile apps, we hope you&#8217;ll let us know.</p>
+<p>The Toura Dev team doesn&#8217;t just work on Mulberry &#8211; we&#8217;ve also shipped more
+than 100 apps that use the underlying Mulberry technology, which means we&#8217;re
+always trying to make our <em>own</em> experience of the toolkit a pleasant one.
+Pretty much every developer-friendly feature we&#8217;ve added so far was added
+because we&#8217;re developers, too, and we hate when our tools get in our way. That
+said, we know tools can always be better &#8211; if there&#8217;s something we could do to
+make your life easier when developing mobile apps, we hope you&#8217;ll let us know.</p>
 ]]></content>
   </entry>
   
