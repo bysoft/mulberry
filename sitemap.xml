@@ -2,36 +2,48 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://mulberry.toura.com/blog/2011/10/30/custom-functionality/</loc>
-        <lastmod>2011-11-03T22:03:55-04:00</lastmod>
+        <lastmod>2011-11-04T02:03:55+00:00</lastmod>
     </url>
     <url>
         <loc>
             http://mulberry.toura.com/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/
         </loc>
-        <lastmod>2011-11-03T22:03:55-04:00</lastmod>
+        <lastmod>2011-11-15T23:13:46+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/</loc>
+        <lastmod>2011-11-15T23:13:46+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mulberry.toura.com/blog/2011/11/16/browser-based-development/</loc>
+        <lastmod>2011-11-16T18:14:16+00:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/blog/archives/</loc>
-        <lastmod>2011-11-03T22:03:55-04:00</lastmod>
+        <lastmod>2011-11-16T18:14:16+00:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/blog/</loc>
-        <lastmod>2011-11-03T22:03:55-04:00</lastmod>
+        <lastmod>2011-11-16T18:14:16+00:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/download/</loc>
-        <lastmod>2011-10-31T21:25:10-04:00</lastmod>
+        <lastmod>2011-11-15T23:13:46+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mulberry.toura.com/getting-started/</loc>
+        <lastmod>2011-11-16T18:14:16+00:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/</loc>
-        <lastmod>2011-11-03T22:03:55-04:00</lastmod>
+        <lastmod>2011-11-15T23:13:46+00:00</lastmod>
     </url>
     <url>
         <loc>http://mulberry.toura.com/license/</loc>
-        <lastmod>2011-11-03T20:30:39-04:00</lastmod>
+        <lastmod>2011-11-04T00:30:39+00:00</lastmod>
     </url>
     <url>
-        <loc>http://mulberry.toura.com/overview/</loc>
-        <lastmod>2011-11-03T22:03:55-04:00</lastmod>
+        <loc>http://mulberry.toura.com/support/</loc>
+        <lastmod>2011-11-15T23:13:46+00:00</lastmod>
     </url>
 </urlset>
