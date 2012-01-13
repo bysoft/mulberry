@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>Capabilities - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="        Capabilities          Capabilities describe how two or more components that are present on a page should interact with each other. Capabili...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/capabilities.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-13T11:13:13-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,45 +87,83 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    <h1 class="entry-title">Capabilities</h1>
     
   </header>
   
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+  <p>Capabilities describe how two or more components that are present on a page should interact with each other. Capabilities have names, which allows them to be referenced in a plain-text template configuration, and also allows them to be reused in multiple template configurations.</p>
 
-<ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
-</ol>
+<p>Here is an example of a capability that defines the interaction between an Image Gallery and an Image Caption component:</p>
+
+<pre><code>mulberry.capability("ImageGallery_ImageCaption", {
+  requirements : {
+    imageGallery : 'ImageGallery',
+    imageCaption : 'ImageCaption'
+  },
+
+  connects : [
+    [ 'imageGallery', 'onScrollEnd', '_setCaption' ]
+  ],
+
+  _setCaption : function(imageIndex) {
+    var image = this.node.images[imageIndex];
+    this.imageCaption.set('content', image &amp;&amp; image.caption || '');
+  }
+});
+</code></pre>
+
+<p>A capability indicates the components that it requires, and then indicates the function that should run when a component announces an event. In the example above, the capability indicates that it requires an ImageGallery and ImageCaption component, and that the <code>_setCaption</code> method defined in the capability&#8217;s configuration should run when the <code>onScrollEnd</code> method of the Image Gallery instance is called.</p>
+
+<p>To add a capability to a custom page template, specify the capability&#8217;s name
+and the involved component(s) in the template definition. Note that each
+involved component should be prefixed by the name of the screen on which it
+appears &#8211; this allows the same component to be used on multiple screens
+without confusion.</p>
+
+<pre><code>ImageGallery
+  screens:
+    -
+      name: index
+      regions:
+        -
+          size: fixed
+          scrollable: false
+          components:
+            - PageNav
+        -
+          size: flex
+          scrollable: true
+          components:
+            - ImageGallery
+            - ImageCaption
+    capabilities:
+      -
+        name: ImageGallery_ImageCaption
+        components:
+          - index:ImageGallery
+          - index:ImageCaption
+</code></pre>
 
 
   
     <footer>
       
       
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/capabilities.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/capabilities.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -208,6 +246,7 @@ ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
 
   
 </aside>
+
 
 
     </div>

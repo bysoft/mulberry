@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>Getting Started - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="        Getting Started          InstallationYou should read the READMEfor installation instructions before proceeding with the rest of the steps b...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/getting-started.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-13T11:13:13-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,45 +87,120 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    <h1 class="entry-title">Getting Started</h1>
     
   </header>
   
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+  <h2>Installation</h2>
 
-<ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
-</ol>
+<p><strong>You should read the <a href="https://github.com/Toura/mulberry/blob/master/README.md">README</a>
+for installation instructions before proceeding with the rest of the steps below.</strong></p>
+
+<h2>Scaffold</h2>
+
+<p>Mulberry lets you quickly create the basic structure for an application at the
+location you specify. Run this from the directory where you want to create a new
+directory that will contain your app.</p>
+
+<pre><code>mulberry scaffold myapp
+</code></pre>
+
+<h2>Configure</h2>
+
+<p>The scaffolding step will create a few files and directories. You&#8217;ll need to
+edit the file <code>config.yml</code> to provide some basic configuration information. See
+the notes in the file for details.</p>
+
+<h2>Construct</h2>
+
+<p>The scaffolding step also creates a <code>sitemap.yml</code> file. Edit this to describe
+the structure of your application. Note that the home and about pages are
+created for you automatically, and generally are the only two pages at the top
+level of the sitemap; all other pages should be placed below the home page.</p>
+
+<pre><code>- home:
+  - schedule
+  - speakers
+  - points-of-interest
+- about
+</code></pre>
+
+<p>In order for your app to work, you&#8217;ll need a Markdown file in the pages
+directory for each page in the sitemap. These files also include some metadata
+in the form of a YAML header. At a minimum, you need to specify the title to
+display for the page, and the template you want to use. Make sure that the file
+you create has the same name as the entry in the sitemap; for example, the home
+page should be placed at <code>pages/home.md</code>:</p>
+
+<pre><code>---
+title: CapitolJS
+template: Home
+---
+
+Good afternoon agent. Your mission, should you choose to accept it, involves
+the learning of the programming language JavaScript and how to use it properly
+and effectively. You will be joined by an intimate task force of elite members
+of the JavaScript community to assist you in this task. You may select to
+attend either or both of the evening social events occurring the night before
+and night of the event. This event is happening on September 18th, 2011 in
+Washington, DC at the [Hotel Palomar](http://www.hotelpalomar-arlington.com/).
+If you accept this mission, be sure to follow
+[@capitoljs](http://www.twitter.com/capitoljs) and register today, like all
+JSConf events - it will sell out. See you in Washington DC.
+</code></pre>
+
+<p>For more on creating pages, see the Creating Pages and Assets documentation.</p>
+
+<h2>Customize</h2>
+
+<p>Mulberry allows extensive customization of your application. See the documentation
+in the repository <a href="https://github.com/toura/mulberry/wiki">Wiki</a> for details.</p>
+
+<h2>Develop</h2>
+
+<p>For rapid iteration, you can run your app in a desktop WebKit browser and get
+access to your standard development tools. Run the following from the root of
+your project:</p>
+
+<pre><code>mulberry serve
+</code></pre>
+
+<h2>Test</h2>
+
+<p>Generate test builds that you can run in a simulator or on a properly
+provisioned device. Run the following from the root of your project:</p>
+
+<pre><code>mulberry test
+</code></pre>
+
+<h2>Deploy</h2>
+
+<p>Create binaries for the various form factors and operating systems your app
+supports. Run the following from the root of your project:</p>
+
+<pre><code>mulberry deploy
+</code></pre>
 
 
   
     <footer>
       
       
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/getting-started.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/getting-started.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -208,6 +283,7 @@ ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
 
   
 </aside>
+
 
 
     </div>

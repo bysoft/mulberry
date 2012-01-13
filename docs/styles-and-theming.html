@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>Styles and Theming - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="        Styles and Theming          Mulberry uses Sass for CSS, which gives us a lot of tools for keeping our code DRY, but since we use the scss s...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/styles-and-theming.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-13T11:13:13-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,45 +87,172 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    <h1 class="entry-title">Styles and Theming</h1>
     
   </header>
   
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+  <p>Mulberry uses <a href="http://sass-lang.com/">Sass</a> for CSS, which gives us a lot of tools for keeping our code DRY, but since we use the <strong>scss</strong> syntax, you can write all your code in plain CSS if that’s what you’re more comfortable with.</p>
 
-<ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
-</ol>
+<p>To begin styling your app, you need to define its theme. When you scaffold an app, by default it will get the &#8211; you guessed it &#8211; <strong>default</strong> theme. This is an ok starting point but not that exciting, so you’ll want to either tweak it by overriding some of the existing styles, or start from scratch and create a new theme. Either way, you do all your work in the themes folder.</p>
+
+<h3>Tweaking the existing default theme</h3>
+
+<p>When you scaffold an app it gives you a complete copy of the default theme in <code>themes/default</code>. If you don&#8217;t want something drastically different, this is a good starting point that you can tweak as needed. The starting point is <code>base.scss</code>, where you add your styles or import other files. If you just want to change some colors or fonts, you can modify those in the <code>_settings.scss</code> file.</p>
+
+<p>The built in themes may change or be updated with bugfixes in the future, but since you&#8217;re working on your own copy, you won&#8217;t get them immediately. To get the latest themes, type</p>
+
+<pre><code>mulberry update_themes
+</code></pre>
+
+<p>And it will overwrite any changes you have locally with the latest version. If you&#8217;re using version control you should be able to merge the updates into your code without a problem.</p>
+
+<h3>Creating a new theme</h3>
+
+<p>While the default theme is an OK starting point, you&#8217;ll probably want to create your own theme. To create a new theme from scratch, simply:</p>
+
+<ul>
+<li>create a new directory in themes</li>
+<li>create a <code>base.scss</code> file in that directory</li>
+<li>change the theme name in <code>_config.yml</code> to your theme’s directory</li>
+<li>add your styles or import directives to <code>base.scss</code></li>
+</ul>
+
+
+<p>You can probably figure out how to style what you want by looking through the Web Inspector, but there are a few things you might want to know about how Mulberry markup that will be helpful.</p>
+
+<h3>Pages, Screens, Regions and Components</h3>
+
+<p>These are the building blocks of a Mulberry app. You’ve already seen references to them in the <a href="/docs/page-definitions.html">page definitions</a>, but here’s what it means for styling. Mulberry takes a page definition and constructs consistent markup with helpful hooks for styling whichever part of your app you need to. For instance the page definition classname gets added to the page’s root element, so if you want to apply a style to pages with that page definition, it’s no problem:</p>
+
+<pre><code>.page.my-page-def {
+  color: green;
+}
+</code></pre>
+
+<p>Pages contain screens, which also contain their name as a class:</p>
+
+<pre><code>.page.my-page-def {
+  color: MidnightBlue;
+
+  .screen.index {
+    background-color: LightGoldenrodYellow;
+  }
+}
+</code></pre>
+
+<p>And lastly there are regions, which can be selected either based on the className you assign to them in the page definition (optional in the template definition) or based on their position in the page definition.</p>
+
+<pre><code>.page.my-page-def {
+  color: green;
+
+  .screen.index {
+    background-color: orange;
+
+    .region.header {
+      height: 60px;
+    }
+
+    &gt; .region.nth-child(2) {
+      &gt; .region:first-child {
+        width: 200px;
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3><a id="layout-mixins"></a>Screen Layout</h3>
+
+<p>Usually, you&#8217;ll need to lay out your regions in columns and rows, so Mulberry provides a few Sass mixins to handle this in a reliable way. They use the <a href="http://www.the-haystack.com/2010/01/23/css3-flexbox-part-1/">flexible box model</a>.</p>
+
+<ul>
+<li><code>flex-row-container</code>: Defines a region as a flex-box container with child regions as rows.</li>
+<li><code>flex-column-container</code>: Defines a region as a flex-box container with child regions as columns.</li>
+<li><code>flex-region(&lt;proportion&gt;)</code>: Used for child elements of <code>flex-row-container</code> and <code>flex-column-container</code>, but allows you to specify the proportion of space the region should take up.</li>
+<li><code>fixed-flex-region</code>: Defines fixed-size region within a flex-box container.</li>
+</ul>
+
+
+<p>Here&#8217;s how they might be used to create a screen with a fixed-size header, with some columns underneath:</p>
+
+<pre><code>.page.my-page-def {
+  color: green;
+
+  .screen.index {
+    @include flex-row-container;
+    background-color: orange;
+
+    .region.header {
+      @include fixed-flex-region;
+      height: 60px;
+    }
+
+    &gt; .region.nth-child(2) {
+      @include flex-column-container;
+
+      &gt; .region:first-child {
+        width: 200px;
+      }
+    }
+  }
+}
+</code></pre>
+
+<h3>Components</h3>
+
+<p>You probably don’t want to put too many styles for your components within the page definition styles, because you want the component styles to be reused no matter what page it’s placed in. So component styles are best handled separately, although the conventions are similar. Say we want to style the ImageGallery component.</p>
+
+<pre><code>.component.image-gallery {
+  background-color: LemonChiffon;
+}
+</code></pre>
+
+<h3>Hiding and Showing Components and Elements</h3>
+
+<p>One of the most common UI style actions is simply hiding and showing something depending on user input. By default every component and ever element within a component has a <code>hidden</code> class which specifies how you want that element to be hidden when the <code>_Component::hide</code> method is called. By default it’s simply <code>display:none</code>. But by overriding the <code>hidden</code> class you can use CSS transforms to give things a little more flair.</p>
+
+<pre><code>.component.my-component {
+  .something-cool {
+    opacity: 1;
+    -webkit-transition: opacity .3s ease-in;
+
+    &amp;.hidden {
+      opacity: 0;
+      display: block !important;
+    }
+  }
+}
+</code></pre>
+
+<p>Now, whenever the something-cool element gets hidden, it will fade out nicely. When it gets unhidden, it fades in nicely. The even nicer thing here is that we have added this without touching any application code. We can can keep presentation logic out of Javascript and in CSS.</p>
+
+<h2>Other Topics</h2>
+
+<ul>
+<li><a href="/docs/style-application-sequence.html">Style Application Sequence</a></li>
+</ul>
+
 
 
   
     <footer>
       
       
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/styles-and-theming.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/styles-and-theming.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -208,6 +335,7 @@ ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
 
   
 </aside>
+
 
 
     </div>

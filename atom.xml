@@ -4,7 +4,7 @@
   <title><![CDATA[Toura Mulberry]]></title>
   <link href="http://mulberry.toura.com/atom.xml" rel="self"/>
   <link href="http://mulberry.toura.com/"/>
-  <updated>2011-11-16T21:03:58+00:00</updated>
+  <updated>2012-01-13T11:13:13-08:00</updated>
   <id>http://mulberry.toura.com/</id>
   <author>
     <name><![CDATA[Toura Dev]]></name>
@@ -14,9 +14,76 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Announcing Mulberry 0.3: Even Easier Customization]]></title>
+    <link href="http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3/"/>
+    <updated>2012-01-11T15:39:00-08:00</updated>
+    <id>http://mulberry.toura.com/blog/2012/01/11/mulberry-0.3</id>
+    <content type="html"><![CDATA[<p>It&#8217;s a new year, and with that comes a new release of <a href="http://mulberry.toura.com/download/">Mulberry</a>! As with the previous release, our goal is to make it easier to get started with Mulberry, and once you&#8217;re up and running, we want to make it easier to customize your app. Some of the highlights:</p>
+
+<ul>
+<li><p><strong>Installer scripts for OSX and Windows (Ubuntu is on the way):</strong>
+Getting started with Mulberry used to require downloading and installing a lot of other dependencies. While we haven&#8217;t been able to <em>completely</em> automate this, we have made it a whole lot easier. Find the script for your OS in <a href="https://github.com/Toura/mulberry/tree/master/install"><code>/install/&lt;os&gt;/</code></a>, follow the instructions in the README, then run the installer script, and you&#8217;ll be up and running.</p></li>
+<li><p><strong>Customizable default theme:</strong>
+The &#8220;default&#8221; theme used to be difficult to customize. If you decided to use it you were basically stuck with a <em>lot</em> of gray. Now all the colors and fonts can now be changed from the <code>themes/default/_settings.scss</code> file, so you don&#8217;t have to dig through alot of code or create a completely new theme just to change some colors. The icons are now customizable as well. Simply replace any of the images in <code>themes/default/icons</code> with whatever you want.</p></li>
+<li><p><strong>Templates are now &#8220;page_defs&#8221;:</strong>
+In 0.2, we had &#8220;templates&#8221; which were yaml files where you&#8217;d define the layout for a page in columns and rows. But these templates also had a lot of non-presentational information, which tended to be confusing. So we changed things so that page layout is handled in CSS (as it should be), and page_defs got a little simpler. We added a few Sass mixins to help with page layout. <a href="http://mulberry.toura.com/docs/page-definitions.html">Read more about page_defs.</a></p></li>
+<li><p><strong>New and Improved Code Generators:</strong>
+It was already possible to create new routes, but now you can run <code>mulberry create route '/foo/:bar'</code> and it will generate the necessary code and add it to <code>routes.js</code>, which you can then customize. Running <code>mulberry create page_def</code> will now generate a boilerplate scss file and add <code>import</code> directive.</p></li>
+</ul>
+
+
+<p>In addition to all the new stuff, we&#8217;ve got a bug of bugfixes, improved development server stability, and more complete test coverage. For the full story, <a href="http://mulberry.toura.com/docs/0.3-release-notes.html">read the full release notes</a>.</p>
+
+<p>As always, follow us at <a href="http://twitter.com/touradev">@touradev</a> to keep up to date on the latest developments, or get help in the <a href="https://groups.google.com/forum/#!forum/toura-mulberry">Google Group</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Announcing Mulberry 0.2: More Features for Easy Customization]]></title>
+    <link href="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/"/>
+    <updated>2011-11-29T09:21:00-08:00</updated>
+    <id>http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2</id>
+    <content type="html"><![CDATA[<p><a href="http://mulberry.toura.com/download/">Mulberry 0.2</a> is out today, with several new features to make it
+even easier to customize your apps:</p>
+
+<ul>
+<li>In Mulberry 0.1, you had to be very verbose when overriding the default
+styles. As of 0.2, when an app is scaffolded, the default theme is copied
+into the app, where it can be modified directly. To pull any upstream changes
+to the built-in themes, we added <code>mulberry update_themes</code> to the CLI.</li>
+<li>A new <code>toura.app.Phonegap.registerAPI</code> method lets you create your own
+wrappers that make it easier to do development in a browser. <a href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/">Read more about browser-based development with Mulberry.</a></li>
+<li>We beefed up <code>mulberry create component</code>; it now automatically
+creates a stub .scss file for the component, and adds an @import statement to
+your theme&#8217;s <code>base.scss</code> file.</li>
+<li>Now when you add pages to your sitemap, you can just run <code>mulberry scaffold</code>
+inside your Mulberry project to create them all at once, rather than having
+to remember which ones to create yourself. <a href="http://mulberry.toura.com/docs/Command-Line-Interface.html">Read about all the command line options.</a></li>
+<li>It&#8217;s often necessary to repopulate a component or a piece of a component when
+it gets new data or its state changes. Mulberry 0.2 introduces the <code>populate</code>
+and <code>populateElement</code> methods on components to make this easier &#8211; just pass
+it a template and the data for the template, and it handles the rest. <a href="http://mulberry.toura.com/docs/Creating-Custom-Components.html">Read
+more about custom components.</a></li>
+<li>Lots of people were asking us about how to create custom routes; it was
+possible before, but it&#8217;s easier in Mulberry 0.2: we added mulberry.route and
+mulberry.routes for defining custom routes. <a href="http://mulberry.toura.com/docs/Javascript-API.html">Read more about defining routes and other aspects of the JavaScript API.</a></li>
+</ul>
+
+
+<p>We also landed a few other features, several bug fixes, some improvements to
+the command line, and lots of docs. Read the full release notes
+<a href="http://mulberry.toura.com/docs/0.2-Release-Notes.html">here</a>.</p>
+
+<p>As always, you can find us on Twitter <a href="http://twitter.com/touradev">@touradev</a>,
+visit us in the #touramulberry channel on irc.freenode.net, or drop us a note
+at <a href="mailto:mulberry@toura.com">mulberry@toura.com</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Browser-based development: Fewer builds, better tools]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/"/>
-    <updated>2011-11-16T10:13:00+00:00</updated>
+    <updated>2011-11-16T10:13:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/16/browser-based-development</id>
     <content type="html"><![CDATA[<p>I&#8217;m in London after attending the <a href="http://fullfrontal.org">Full Frontal JavaScript Conference</a>,
 put on by the fantastic Remy and Julieanne
@@ -123,7 +190,7 @@ make your life easier when developing mobile apps, we hope you&#8217;ll let us k
   <entry>
     <title type="html"><![CDATA[Weinre: Sane, hosted debugging tools for your Mulberry apps]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/14/hosted-weinre/"/>
-    <updated>2011-11-14T22:40:00+00:00</updated>
+    <updated>2011-11-14T22:40:00-08:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/14/hosted-weinre</id>
     <content type="html"><![CDATA[<p>At Toura, we perform the vast majority of our day-to-day development in our
 desktop WebKit browsers - Chrome and Safari. Although the desktop browsers
@@ -169,7 +236,7 @@ HTML, and more - right on the device!</p>
   <entry>
     <title type="html"><![CDATA[An Opinionated Framework, Focused on Reuse]]></title>
     <link href="http://mulberry.toura.com/blog/2011/11/03/an-opinionated-framework-focused-on-reuse/"/>
-    <updated>2011-11-03T20:31:00+00:00</updated>
+    <updated>2011-11-03T20:31:00-07:00</updated>
     <id>http://mulberry.toura.com/blog/2011/11/03/an-opinionated-framework-focused-on-reuse</id>
     <content type="html"><![CDATA[<p>One of the questions that’s come up several times in talking to other
 developers about Mulberry is this: How is Mulberry any different from all of
@@ -236,7 +303,7 @@ endeavor.</p>
   <entry>
     <title type="html"><![CDATA[Creating Custom Functionality with Mulberry]]></title>
     <link href="http://mulberry.toura.com/blog/2011/10/30/custom-functionality/"/>
-    <updated>2011-10-30T14:10:00+00:00</updated>
+    <updated>2011-10-30T14:10:00-07:00</updated>
     <id>http://mulberry.toura.com/blog/2011/10/30/custom-functionality</id>
     <content type="html"><![CDATA[<p>Out of the box, Mulberry&#8217;s great at making simple content-driven apps, but one
 of the things we heard loud and clear during the closed alpha was that

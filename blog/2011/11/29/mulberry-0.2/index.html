@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>Announcing Mulberry 0.2: More Features for Easy Customization - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="Mulberry 0.2 is out today, with several new features to make iteven easier to customize your apps:In Mulberry 0.1, you had to be very verbose when ...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-13T11:13:13-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -84,49 +84,131 @@
 
   <div id="main">
     <div id="content">
-      <article role="article">
+      <div>
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    
+      <h1 class="entry-title">Announcing Mulberry 0.2: More Features for Easy Customization</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+  
+
+<time datetime="2011-11-29T09:21:00-08:00" pubdate>Nov 29<span>th</span>, 2011</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+      <p class="meta author">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rebecca Murphey</span></span>
+
+      </p>
     
   </header>
+
+
+<div class="entry-content"><p><a href="/download/">Mulberry 0.2</a> is out today, with several new features to make it
+even easier to customize your apps:</p>
+
+<ul>
+<li>In Mulberry 0.1, you had to be very verbose when overriding the default
+styles. As of 0.2, when an app is scaffolded, the default theme is copied
+into the app, where it can be modified directly. To pull any upstream changes
+to the built-in themes, we added <code>mulberry update_themes</code> to the CLI.</li>
+<li>A new <code>toura.app.Phonegap.registerAPI</code> method lets you create your own
+wrappers that make it easier to do development in a browser. <a href="http://mulberry.toura.com/blog/2011/11/16/browser-based-development/">Read more about browser-based development with Mulberry.</a></li>
+<li>We beefed up <code>mulberry create component</code>; it now automatically
+creates a stub .scss file for the component, and adds an @import statement to
+your theme&#8217;s <code>base.scss</code> file.</li>
+<li>Now when you add pages to your sitemap, you can just run <code>mulberry scaffold</code>
+inside your Mulberry project to create them all at once, rather than having
+to remember which ones to create yourself. <a href="/docs/Command-Line-Interface.html">Read about all the command line options.</a></li>
+<li>It&#8217;s often necessary to repopulate a component or a piece of a component when
+it gets new data or its state changes. Mulberry 0.2 introduces the <code>populate</code>
+and <code>populateElement</code> methods on components to make this easier &#8211; just pass
+it a template and the data for the template, and it handles the rest. <a href="/docs/Creating-Custom-Components.html">Read
+more about custom components.</a></li>
+<li>Lots of people were asking us about how to create custom routes; it was
+possible before, but it&#8217;s easier in Mulberry 0.2: we added mulberry.route and
+mulberry.routes for defining custom routes. <a href="/docs/Javascript-API.html">Read more about defining routes and other aspects of the JavaScript API.</a></li>
+</ul>
+
+
+<p>We also landed a few other features, several bug fixes, some improvements to
+the command line, and lots of docs. Read the full release notes
+<a href="/docs/0.2-Release-Notes.html">here</a>.</p>
+
+<p>As always, you can find us on Twitter <a href="http://twitter.com/touradev">@touradev</a>,
+visit us in the #touramulberry channel on irc.freenode.net, or drop us a note
+at <a href="mailto:mulberry@toura.com">mulberry@toura.com</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+<span class="byline author vcard">Posted by <span class="fn">Rebecca Murphey</span></span>
 
-<ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
-</ol>
+      
+
+
 
 
   
-    <footer>
+
+<time datetime="2011-11-29T09:21:00-08:00" pubdate>Nov 29<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  in
+  
+    <a class='category' href='/blog/categories/release/'>release</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/" data-via="touradev" data-counturl="http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/11/16/browser-based-development/" title="Previous Post: Browser-based development: Fewer builds, better tools">&laquo; Browser-based development: Fewer builds, better tools</a>
       
       
-    </footer>
-  
+        <a class="basic-alignment right" href="/blog/2012/01/11/mulberry-0.3/" title="next Post: Announcing Mulberry 0.3: Even Easier Customization">Announcing Mulberry 0.3: Even Easier Customization &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
-
+</div>
 
 <aside class="sidebar">
   
@@ -239,7 +321,10 @@ $.domReady(function() {
       var disqus_shortname = 'touramulberry';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/';
+        var disqus_url = 'http://mulberry.toura.com/blog/2011/11/29/mulberry-0.2/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>Upgrading - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="        Upgrading          From 0.1 to 0.2:The template definition yaml format changed. Any custom templates should be updated:regions no longer us...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/upgrading.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-13T11:13:13-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,45 +87,92 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    <h1 class="entry-title">Upgrading</h1>
     
   </header>
   
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+  <h2>From 0.1 to 0.2:</h2>
 
-<ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
-</ol>
+<ul>
+<li>The template definition yaml format <a href="https://github.com/Toura/mulberry/pull/91">changed</a>. Any custom templates should be updated:
+
+<ul>
+<li>regions no longer use <code>containerType</code> property</li>
+<li>regions now have a <code>type</code> property which can have the value of <code>row</code>, <code>column</code>, or <code>component</code></li>
+</ul>
+</li>
+<li>The default theme is now copied into a scaffolded app, so old apps don&#8217;t have a copy of it. The main <code>custom.scss</code> is also now called <code>base.scss</code>. (<strong>Warning:</strong> the following may overwrite some of your files. Make sure you&#8217;re using version control.) To get the default theme, do <code>mulberry update_themes</code></li>
+<li>The <code>locations-map</code> template is now named <code>google-map-phone</code> and <code>google-map-tablet</code> as appropriate.</li>
+<li>The pattern for the command line commands has changed; see <a href="/docs/command-line-interface.html">Command Line Interface</a></li>
+</ul>
+
+
+<h2>From 0.2 to 0.3:</h2>
+
+<ul>
+<li>Upgrade to PhoneGap 1.3
+
+<ul>
+<li>If you&#8217;re developing for iOS, download <a href="http://phonegap.com/download/">PhoneGap</a> and run the iOS installer</li>
+</ul>
+</li>
+<li><code>templates</code> are now called <code>page_defs</code>
+
+<ul>
+<li>Rename the <code>templates</code> directory to <code>page_defs</code></li>
+<li>In all your page markdown files, change <code>template</code> to <code>page_def</code></li>
+</ul>
+</li>
+<li>Theming changes: To get the changes, run <code>mulberry update_themes</code> and resolve any conflicts manually
+
+<ul>
+<li>Icons have been moved to <code>themes/default/resources/icons</code>.</li>
+<li>All colors have been extracted to <code>themes/default/_settings.scss</code></li>
+<li>Instead of defining layout in page_def yaml files, use mixins in page_def scss files
+
+<ul>
+<li>Any references to the following sass mixins should be changed:
+
+<ul>
+<li><code>column-container</code> -> <code>flex-column-container</code></li>
+<li><code>row-container</code> -> <code>flex-row-container</code></li>
+</ul>
+</li>
+<li>For any custom templates you&#8217;ve created:
+
+<ul>
+<li>create an scss file in <code>themes/&lt;my theme&gt;/pagedefs</code></li>
+<li>remove all <code>type:&lt;row, column&gt;</code> parameters from the yaml. Apply <code>flex-row-container</code> and <code>flex-column-container</code> to their parent region in scss instead</li>
+<li>remove all <code>layout: size-fixed</code> from the yaml. Apply <code>fixed-flex-region</code> to the element in the scss instead</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
 
 
   
     <footer>
       
       
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/upgrading.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/upgrading.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -208,6 +255,7 @@ ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
 
   
 </aside>
+
 
 
     </div>

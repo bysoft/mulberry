@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>Upgrading to new PhoneGap versions - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="        Upgrading to New PhoneGap Versions          First upgrade the iphone xcode project (Toura.xcodeproj)Create a new project in /tmp called &#8...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/upgrading-to-new-phonegap-versions.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-13T11:13:13-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,45 +87,124 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    <h1 class="entry-title">Upgrading to New PhoneGap Versions</h1>
     
   </header>
   
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+  <ul>
+<li>First upgrade the iphone xcode project (Toura.xcodeproj)
 
-<ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
-</ol>
+<ul>
+<li>Create a new project in /tmp called &#8220;Toura&#8221; using the PhoneGap template
+
+<ul>
+<li>do not use automatic reference counting</li>
+<li>do not check option to create local git repo for project</li>
+</ul>
+</li>
+<li>cd <mulberry>/lib/project_templates/iOS</li>
+<li>cp -R Toura/* /tmp/Toura/Toura/</li>
+<li>Add plugins to project:
+
+<ul>
+<li>cntrl-click on the Plugins group and then Add Files to Toura&#8230;</li>
+<li>navigate to <mulberry>/lib/project_templates/iOS/Toura/Plugins</li>
+<li>select all files/directories</li>
+<li>select &#8220;Create groups for any added folders&#8221;</li>
+<li>click Add button</li>
+</ul>
+</li>
+<li>Rinse/repeat the above for the Classes group but delete the AppDelegate.{h,c} files first</li>
+<li>Add FlurryLib group to the Toura group in a similar manner</li>
+<li>Add the UrbanAirship.plist file to the Supporting Files group</li>
+<li>Run the project in the simulator.  This will generate a www directory which will contain the new phonegap-x.x.x.js file.</li>
+<li>cp -R www/* /tmp/Toura/www/</li>
+<li>mv /tmp/Toura/www/phonegap-x.x.x.js /tmp/Toura/www/phonegap.js</li>
+<li>cd ..</li>
+<li>mv iOS iOS.bak</li>
+<li>close the xcode project</li>
+<li>mv /tmp/Toura iOS</li>
+<li>open up the xcode project from the new location in <mulberry>/lib/project_templates/iOS</li>
+<li>Drag the www directory from Finder into the project adding it to the root node.  Be sure to select the &#8220;Create folder references for any added folders&#8221; option.</li>
+<li>on the &#8220;Toura&#8221; Target change settings:
+
+<ul>
+<li>Summary -> iOS Application Target -> Devices - iPhone</li>
+<li>Summary -> iOS Application Target -> Deployment Target - 4.0</li>
+<li>Build Settings -> Build Options -> Compiler for C/C++/Objective-C -> Apple LLVM compiler - 3.0</li>
+</ul>
+</li>
+<li>remove icon-72.png (reference only) from the Toura/Resources/Icons folder</li>
+</ul>
+</li>
+<li>now update the ipad xcode project (Toura-iPad.xcodeproj)
+
+<ul>
+<li>Create a new project in /tmp called &#8220;Toura-iPad&#8221; using the PhoneGap template
+
+<ul>
+<li>do not use automatic reference counting</li>
+<li>do not check option to create local git repo for project</li>
+</ul>
+</li>
+<li>close project</li>
+<li>mv /tmp/Toura-iPad/Toura-iPad.xcodeproj/ .</li>
+<li>open Toura-iPad.xcodeproj from the new location in <mulberry>/lib/project_templates/iOS</li>
+<li>rename the &#8220;Toura-iPad&#8221; group to &#8220;Toura&#8221;</li>
+<li>Change the directory that this group is mapped to &#8211; this can be done in &#8220;Identity&#8221; panel to the far right when the group is selected.</li>
+<li>Add plugins to project:
+
+<ul>
+<li>cntrl-click on the Plugins group and then Add Files to Toura-iPad &#8230;</li>
+<li>navigate to <mulberry>/lib/project_templates/iOS/Toura/Plugins</li>
+<li>select all files/directories</li>
+<li>select &#8220;Create groups for any added folders&#8221;</li>
+<li>click Add button</li>
+</ul>
+</li>
+<li>Rinse/repeat the above for the Classes group but delete the AppDelegate.{h,c} files first</li>
+<li>Add FlurryLib group to the Toura group in a similar manner</li>
+<li>Rename the Toura-iPad<em> files in the Supporting Files group to Toura-</em></li>
+<li>Add the UrbanAirship.plist file to the Supporting Files group</li>
+<li>Drag the www directory from Finder into the project adding it to the root node.  Be sure to select the &#8220;Create folder references for any added folders&#8221; option.</li>
+<li>on the &#8220;Toura-iPad&#8221; Target change settings:
+
+<ul>
+<li>Summary -> iOS Application Target -> Devices - iPad</li>
+<li>Summary -> iOS Application Target -> Deployment Target - 4.0</li>
+<li>Build Settings -> Build Options -> Compiler for C/C++/Objective-C -> Apple LLVM compiler - 3.0</li>
+<li>Build Settings -> Packaging -> Info.plist File - Toura/Toura-Info.plist</li>
+<li>Build Settings -> Apple LLVM compiler 3.0 - Language -> Prefix Header - Toura/Toura-Prefix.pch</li>
+</ul>
+</li>
+<li>remove icon@2x.png (reference only) from the Toura/Resources/Icons folder</li>
+<li>remove Default@2x.png (reference only) from the Toura/Resources/Splash folder</li>
+<li>add the Default-Landscape.png and Default-Portrait.png files to the Toura/Resources/Splash folder</li>
+</ul>
+</li>
+</ul>
+
 
 
   
     <footer>
       
       
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/upgrading-to-new-phonegap-versions.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/upgrading-to-new-phonegap-versions.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -208,6 +287,7 @@ ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
 
   
 </aside>
+
 
 
     </div>

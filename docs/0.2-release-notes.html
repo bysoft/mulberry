@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>License - Toura Mulberry</title>
+  <title>0.2 Release Notes - Toura Mulberry</title>
   <meta name="author" content="Toura Dev">
 
   
-  <meta name="description" content="        License          Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.comPermission is hereby granted, free of charge, to...">
+  <meta name="description" content="        0.2 Release Notes          Features &amp; ImprovementsAdded toura.app.Phonegap.registerAPI methodIt&#8217;s no longer necessary to override...">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mulberry.toura.com/license/">
+  <link rel="canonical" href="http://mulberry.toura.com/docs/0.2-release-notes.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css?_c=2012-01-13T11:13:13-08:00" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,45 +87,88 @@
       <article role="article">
   
   <header>
-    <h1 class="entry-title">License</h1>
+    <h1 class="entry-title">0.2 Release Notes</h1>
     
   </header>
   
-  <p>Copyright &copy; 2011 Toura, LLC.   All Rights Reserved.  http://toura.com</p>
 
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the &#8220;Software&#8221;), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:</p>
+  <h2>Features &amp; Improvements</h2>
 
-<ol>
-<li><p>The above  copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software and any sublicense shall
-be subject to and include all of the terms of this license.</p></li>
-<li><p>THE SOFTWARE IS PROVIDED &#8220;AS IS&#8221;, WITHOUT WARRANTY OF ANY KIND,  EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF ANY INTELLECTUAL
-PROPERTY. IN NO EVENT SHALL TOURA, THE AUTHORS OR COPYRIGHT HOLDERS OR
-THEIR RESPECTIVE SUCCESSORS OR ASSIGNS,  BE LIABLE FOR ANY CLAIM, DAMAGES
-OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE INCLUDING, WITHOUT
-LIMITATION ANY MODIFICATION, COPYING, DISTRIBUTION, SALE OTHER USE OF OR
-DEALINGS IN THE SOFTWARE. THERE ARE NO IMPLIED RIGHTS GRANTED HEREBY AND
-ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
-</ol>
+<ul>
+<li>Added <code>toura.app.Phonegap.registerAPI</code> method</li>
+<li>It&#8217;s no longer necessary to override the default styles. When an app is scaffolded, the default theme is copied into the app, but it&#8217;s not required to use it. It can be edited and modified. To pull any upstream changes to the built-in themes, a <code>mulberry update_themes</code> command was added.</li>
+<li><code>mulberry create component</code> now creates a placeholder .scss file and adds an <code>@import</code> statement.</li>
+<li><code>mulberry scaffold</code> when run from inside a Mulberry project will now create any pages that are specified in the sitemap but that do not exist.</li>
+<li>The built-in ImageGallery component now has dots to indicate its status.</li>
+<li>Introduced <code>populate</code> and <code>populateElement</code> instance methods on components.</li>
+<li>Added <code>mulberry.route</code> and <code>mulberry.routes</code> for defining custom routes.</li>
+<li>Added support for pages to have &#8220;featured&#8221; images, which are used when displaying a page as an image (for example, in a grid view of child pages)</li>
+<li>A new <code>published</code> property in an app&#8217;s <code>config.yml</code> will be used as the version for app stores.</li>
+</ul>
+
+
+<h2>Changes</h2>
+
+<ul>
+<li>Template yml format changes:
+
+<ul>
+<li>regions no longer use <code>containerType</code> property</li>
+<li>regions now have a <code>type</code> property which can have the value of <code>row</code>, <code>column</code>, or <code>component</code></li>
+</ul>
+</li>
+<li>Changed format of generators - instead of <code>create_template</code>, <code>create_page</code>, it&#8217;s now <code>create template</code>, <code>create page</code>, etc. (ref: https://github.com/Toura/mulberry/pull/130)</li>
+<li>Videos page template converted to configurable system.</li>
+<li>Initial work on web builds.</li>
+<li>weinre now uses api.toura.com</li>
+<li>Upgraded Evergreen test helper to 1.0.0</li>
+<li>Upgraded jshintrb to be more flexible about which version of therubyracer it uses</li>
+<li>Kitchensink demo now includes NodeGallery page.</li>
+<li>The default theme is now copied into a scaffolded app. The main <code>custom.scss</code> is also now called <code>base.scss</code>. <code>mulberry update_themes</code> will update an app with the latest theme files.</li>
+</ul>
+
+
+<h2>Bug Fixes</h2>
+
+<ul>
+<li><code>mulberry scaffold &lt;appname&gt;</code> now creates a file at <code>javascript/base.js</code>, which eliminates a 404 error</li>
+<li>Scaffolding projects by entering the full path for the project now works.</li>
+<li>Regions with more than one component can now scroll.</li>
+<li>Fixed a layout issue on iOS when the keyboard is dismissed.</li>
+<li>Fixed an erroneous &#8220;this message is a duplicate&#8221; error after failed posting to Twitter or Facebook.</li>
+<li>Added <code>parent</code> property to child nodes, allowing sibling nav to work.</li>
+<li><code>template</code> directory now gets created if not present when creating a new template.</li>
+</ul>
+
+
+<h2>Tests</h2>
+
+<ul>
+<li>Basic specs for command line commands.</li>
+<li>Smoke tests for all demo apps.</li>
+<li>Basic tests for adding assets to nodes.</li>
+</ul>
+
 
 
   
     <footer>
       
       
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mulberry.toura.com/docs/0.2-release-notes.html" data-via="touradev" data-counturl="http://mulberry.toura.com/docs/0.2-release-notes.html" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+      
     </footer>
   
 </article>
-
-
 
 
 <aside class="sidebar">
@@ -208,6 +251,7 @@ ANY RIGHTS NOT EXPRESSLY GRANTED ARE HEREBY RESERVED BY TOURA, LLC.</p></li>
 
   
 </aside>
+
 
 
     </div>
